@@ -1,0 +1,9 @@
+export {default as Home} from "./Home";
+export {default as Input} from "./Input";
+export {default as Textarea} from "./Textarea";
+export {default as FileInput} from "./FileInput";
+export {default as QuestionCounter} from "./QuestionCounter";
+export {default as StartPanel} from "./StartPanel";
+export {default as Switcher} from "./Switcher";
+export {default as TestAnswer} from "./TestAnswer";
+export {default as Button} from "./Button";
