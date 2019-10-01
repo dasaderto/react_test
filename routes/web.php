@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'QuestionController@startPage');
+Route::get( '/{path?}', 'QuestionController@startPage')->where('path', '.*');
 
 Auth::routes();
 

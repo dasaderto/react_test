@@ -4,9 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Answer;
 use App\Models\Question;
+use App\User;
 use Illuminate\Http\Request;
 use Barryvdh\Debugbar\Facade as Debugbar;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Response;
+use JWTAuth;
 
 class QuestionController extends Controller
 {

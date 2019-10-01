@@ -136,7 +136,7 @@ class Switcher extends Component {
                 });
                 break;
             case 'text':
-                answerPanel = <Input value={this.state.request.answer} onChange={this.handleChange}/>;
+                answerPanel = <Input inputClass={"text-answer"} value={this.state.request.answer} onChange={this.handleChange}/>;
                 break;
             case 'textarea':
                 answerPanel = <Textarea value={this.state.request.answer} onChange={this.handleChange}/>;

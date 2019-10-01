@@ -9,7 +9,7 @@ export default  function  questionReducer(state = initialState,{type,payload}) {
         case UPDATE_QUESTION:
             state={
                 ...state,
-                questions:payload.questions
+                questions:[...state.questions,payload.questions]
             };
             return state;
         default:

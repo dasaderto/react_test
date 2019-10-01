@@ -1,4 +1,3 @@
-export {default as Home} from "./Home";
 export {default as Input} from "./Input";
 export {default as Textarea} from "./Textarea";
 export {default as FileInput} from "./FileInput";
@@ -7,3 +6,8 @@ export {default as StartPanel} from "./StartPanel";
 export {default as Switcher} from "./Switcher";
 export {default as TestAnswer} from "./TestAnswer";
 export {default as Button} from "./Button";
+export {default as TestOverPanel} from "./TestOverPanel";
+export {default as LoginForm} from "./LoginForm";
+export {default as RegisterForm} from "./RegisterForm";
+export {default as AnswerAppender} from "./AnswerAppender";
+export {default as ProjectSettings} from "./ProjectSettings";

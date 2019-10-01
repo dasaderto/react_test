@@ -9,7 +9,7 @@ export function fetchQuestion(answer){
         return axios.post("/api/questions/list",answer)
             .then(res=>{
                 console.log(res.data);
-                dispatch(updateQuestions([res.data]))
+                dispatch(updateQuestions(res.data))
             });
     }
 }
@@ -18,7 +18,7 @@ export function testStart(){
     return (dispatch)=>{
         return axios.post("/api/test/start")
             .then(res=>{
-                dispatch(updateQuestions([res.data]))
+                dispatch(updateQuestions(res.data))
             });
     }
 }
