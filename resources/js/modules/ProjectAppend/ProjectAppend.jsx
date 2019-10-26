@@ -62,7 +62,7 @@ class ProjectAppend extends Component {
                                                            name={`questions[${index}].ask`}/>
                                                     <RadioGroup aria-label="ask-type">
                                                         {this.state.askTypes.map((type, askTypeIndex) => (
-                                                            <FormControlLabel key={askTypeIndex} value={type.value}
+                                                            <FormControlLabel key={askTypeIndex} value={type.type}
                                                                               control={
                                                                                   <Field
                                                                                       type='radio'
@@ -70,7 +70,7 @@ class ProjectAppend extends Component {
                                                                               } label={type.value}/>
                                                         ))}
                                                     </RadioGroup>
-                                                    {(question.askType === this.state.askTypes[0].value || question.askType === this.state.askTypes[1].value) &&
+                                                    {(question.askType === this.state.askTypes[0].type || question.askType === this.state.askTypes[1].type) &&
                                                     <AnswerAppender answers={question.answers} name={`questions[${index}].answers`}/>}
                                                     <button type="button"
                                                             onClick={() => arrayHelpers.remove(index)} // remove a question from the list

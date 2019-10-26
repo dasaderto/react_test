@@ -7,7 +7,7 @@ export const PROJECT_FETCH = 'project:fetch';
 
 export function createProject(project) {
     return (dispatch) => {
-        return axios.get("/api/users/list?token="+JSON.parse(localStorage["appState"]).user.auth_token)
+        return axios.post("/api/project",project)
             .then(res => {
                 console.log(res.data);
                 if (res.data.success) {

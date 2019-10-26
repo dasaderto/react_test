@@ -84,6 +84,7 @@ class QuestionController extends Controller
     }
 
     public function startPage(){
+        return Response::view("welcome");
         request()->session()->regenerate();
         $this->token  = md5(now().request()->session()->getId());
         $this->userCookie = cookie('token', $this->token, 7200);

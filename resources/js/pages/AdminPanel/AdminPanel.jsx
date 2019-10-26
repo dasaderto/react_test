@@ -10,10 +10,9 @@ class AdminPanel extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-
-        };
+        this.state = {};
     }
+
     componentDidMount() {
         let state = localStorage["appState"];
         if (state) {
@@ -29,7 +28,7 @@ class AdminPanel extends Component {
     render() {
         return (
             <div className="admin">
-                <ProjectAppend  onCreate={this.props.onProjectCreate}/>
+                <ProjectAppend onCreate={this.props.onProjectCreate}/>
             </div>
         );
     }

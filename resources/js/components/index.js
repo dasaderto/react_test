@@ -11,3 +11,4 @@ export {default as LoginForm} from "./LoginForm";
 export {default as RegisterForm} from "./RegisterForm";
 export {default as AnswerAppender} from "./AnswerAppender";
 export {default as ProjectSettings} from "./ProjectSettings";
+export {default as PrivateRoute} from "../components/PrivateRoute/PrivateRoute";

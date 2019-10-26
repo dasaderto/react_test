@@ -11,6 +11,9 @@
 |
 */
 
+
+use Illuminate\Support\Facades\Auth;
+
 Route::get( '/{path?}', 'QuestionController@startPage')->where('path', '.*');
 
 Auth::routes();

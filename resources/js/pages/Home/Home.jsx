@@ -74,7 +74,7 @@ class Home extends Component {
                 user: AppState.user
             });
         }
-        store.subscribe(() => {
+        this.unsubscribe = store.subscribe(() => {
             this.setState({
                 ...this.state,
                 questions: store.getState().questionReducer.questions,
@@ -84,8 +84,11 @@ class Home extends Component {
         });
     }
 
+    componentWillUnmount() {
+        this.unsubscribe();
+    }
+
     render() {
-        console.log(this.props.onCreateProject({token:this.state.user.auth_token}));
         return (
             <div className={'home'}>
                 {this.state.user.name &&
@@ -114,7 +117,6 @@ const mapActionsToProps = {
     onRegister: register,
     onLogout: logout,
     testStart,
-    onCreateProject:createProject
 };
 
 export default connect(mapStateToProps, mapActionsToProps)(Home);

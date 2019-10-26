@@ -1,4 +1,5 @@
 import axios from 'axios';
+import setAuthToken from "../auth/setAuthToken";
 
 export const USER_REGISTER = 'users:register';
 export const USER_REGISTER_FAIL = 'users:fail-register';
@@ -21,6 +22,8 @@ export function login(user) {
                         user: res.data.data
                     };
                     localStorage["appState"] = JSON.stringify(appState);
+                    setAuthToken(res.data.data.auth_token);
+
                     dispatch({
                         type: USER_LOGIN,
                         payload: {
@@ -46,6 +49,7 @@ export function logout() {
             user: {}
         };
         localStorage["appState"] = JSON.stringify(appState);
+        setAuthToken(false);
         dispatch({
             type: USER_LOGOUT,
             payload: {}
@@ -68,6 +72,7 @@ export function register(user) {
                         user: res.data.data
                     };
                     localStorage["appState"] = JSON.stringify(appState);
+                    setAuthToken(res.data.data.auth_token);
                     dispatch({
                         type: USER_REGISTER,
                         payload: {

@@ -2,40 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9c5b03e2-e02d-4262-969b-0f36addcd993" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/js/pages/Home/Home.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/test.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/QuestionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/QuestionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/EncryptCookies.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/EncryptCookies.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/jwtMiddleware.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/jwtMiddleware.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/auth.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_100000_create_password_resets_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_09_28_000000_create_tests_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_09_28_000000_create_tests_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/actions/question-actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/actions/question-actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/actions/admin-actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/actions/admin-actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/actions/auth-actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/actions/auth-actions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/bootstrap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Button/Button.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Button/Button.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Home/Home.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Home/Home.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/Home/Home.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Home/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/Home/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Input/Input.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Input/Input.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/StartPanel/StartPanel.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/StartPanel/StartPanel.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Switcher/Switcher.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Switcher/Switcher.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/reducers/questionReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/reducers/questionReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/reducers/rootReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/reducers/rootReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/styles/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/styles/index.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/modules/ProjectAppend/ProjectAppend.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/modules/ProjectAppend/ProjectAppend.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/pages/AdminPanel/AdminPanel.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/AdminPanel/AdminPanel.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/pages/Home/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/Home/Home.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/reducers/adminReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/reducers/adminReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/reducers/authReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/reducers/authReducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
@@ -209,6 +195,19 @@
       <workItem from="1569824663816" duration="26000" />
       <workItem from="1569860301665" duration="12822000" />
       <workItem from="1569910971321" duration="394000" />
+      <workItem from="1569948829321" duration="8000" />
+      <workItem from="1569961982794" duration="14000" />
+      <workItem from="1569961999511" duration="655000" />
+      <workItem from="1570370568800" duration="14921000" />
+      <workItem from="1570428983584" duration="219000" />
+      <workItem from="1570635658494" duration="207000" />
+      <workItem from="1570700164382" duration="27000" />
+      <workItem from="1571562620264" duration="6885000" />
+      <workItem from="1571638459786" duration="111000" />
+      <workItem from="1571638698523" duration="42000" />
+      <workItem from="1571638771204" duration="33000" />
+      <workItem from="1571638850834" duration="104000" />
+      <workItem from="1571846856677" duration="7806000" />
     </task>
     <servers />
   </component>
@@ -227,16 +226,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/resources/js/reducers/adminReducer.js</url>
-          <line>9</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

@@ -16,14 +16,15 @@ class CreateTestsTable extends Migration
         Schema::create('tests', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->string('test_name');
-            $table->string('test_link');
-            $table->string('animation_type');
-            $table->string('sender_email');
-            $table->string('ya_counter');
-            $table->string('test_preload');
-            $table->string('test_postload');
+            $table->string('test_name')->nullable();
+            $table->string('test_link')->nullable();
+            $table->string('animation_type')->nullable();
+            $table->string('sender_email')->nullable();
+            $table->string('ya_counter')->nullable();
+            $table->string('test_preload')->nullable();
+            $table->string('test_postload')->nullable();
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

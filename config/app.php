@@ -162,7 +162,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
-        Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
+        //Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
         Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
 
 

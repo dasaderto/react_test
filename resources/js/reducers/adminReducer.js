@@ -6,6 +6,10 @@ export default function adminReducer(state = initialState, {type, payload}) {
     switch (type) {
         case PROJECT_CREATE:
             alert('Project sucessful create');
+            state = {
+                ...state,
+                project: payload.project,
+            };
             return state;
         default:
             return state;
