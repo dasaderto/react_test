@@ -6,8 +6,7 @@ import {login, register, logout} from "../../actions/auth-actions";
 import './Home.scss';
 import {Link} from "react-router-dom";
 import {Switcher, StartPanel, TestOverPanel, LoginForm, RegisterForm} from "../../components";
-import { Button } from '@material-ui/core';
-import {createProject} from '../../actions/admin-actions';
+import {Button} from '@material-ui/core';
 
 
 class Home extends Component {
@@ -33,7 +32,7 @@ class Home extends Component {
         this.props.onLogin(user);
     };
 
-    handleLogout = () =>{
+    handleLogout = () => {
         this.props.onLogout();
     };
 
@@ -51,7 +50,6 @@ class Home extends Component {
 
     testSwitcher = () => {
         let renderPack = null;
-
         if (this.state.questions.length) {
             if (this.state.questions.slice(-1)[0].ask === "LAST_RESPONSE") {
                 renderPack = <TestOverPanel/>;
@@ -65,6 +63,14 @@ class Home extends Component {
     };
 
     componentDidMount() {
+        this.unsubscribe = store.subscribe(() => {
+            this.setState({
+                ...this.state,
+                questions: store.getState().questionReducer.questions,
+                isLoggedIn: store.getState().authReducer.isLoggedIn,
+                user: store.getState().authReducer.user,
+            });
+        });
         let state = localStorage["appState"];
         if (state) {
             let AppState = JSON.parse(state);
@@ -74,14 +80,6 @@ class Home extends Component {
                 user: AppState.user
             });
         }
-        this.unsubscribe = store.subscribe(() => {
-            this.setState({
-                ...this.state,
-                questions: store.getState().questionReducer.questions,
-                isLoggedIn: store.getState().authReducer.isLoggedIn,
-                user: store.getState().authReducer.user,
-            });
-        });
     }
 
     componentWillUnmount() {
@@ -92,11 +90,11 @@ class Home extends Component {
         return (
             <div className={'home'}>
                 {this.state.user.name &&
-                    <div className="user">
-                        <span>Приветики {this.state.user.name}</span>
-                        <Button><Link to={'/admin'}>Погнали в админку</Link></Button>
-                        <Button onClick={this.handleLogout}>Выйти</Button>
-                    </div>
+                <div className="user">
+                    <span>Приветики {this.state.user.name}</span>
+                    <Button><Link to={'/admin'}>Погнали в админку</Link></Button>
+                    <Button onClick={this.handleLogout}>Выйти</Button>
+                </div>
                 }
                 {!this.state.isTestStart ? <StartPanel testStarter={this.testStarter}/> : null}
                 {this.testSwitcher()}

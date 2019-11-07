@@ -2,28 +2,55 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9c5b03e2-e02d-4262-969b-0f36addcd993" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/test.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/QuestionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/QuestionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/jwtMiddleware.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/jwtMiddleware.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/jwtMiddleware.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_09_28_000000_create_tests_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_09_28_000000_create_tests_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/auth.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/broadcasting.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/cache.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/database.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/debug-server.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/debugbar.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/filesystems.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/hashing.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/jwt.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/logging.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/mail.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/queue.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/services.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/session.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/tinker.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/trustedproxy.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/view.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/actions/admin-actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/actions/admin-actions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/actions/auth-actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/actions/auth-actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/actions/question-actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/actions/question-actions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/auth/setAuthToken.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/auth/setAuthToken.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/PrivateRoute/PrivateRoute.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/PrivateRoute/PrivateRoute.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/RegisterForm/RegisterForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/RegisterForm/RegisterForm.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Switcher/Switcher.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Switcher/Switcher.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/modules/ProjectAppend/ProjectAppend.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/modules/ProjectAppend/ProjectAppend.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/pages/AdminPanel/AdminPanel.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/AdminPanel/AdminPanel.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/pages/Home/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/Home/Home.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/reducers/adminReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/reducers/adminReducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/reducers/authReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/reducers/authReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/reducers/rootReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/reducers/rootReducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.mix.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.mix.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -126,11 +153,21 @@
       <path value="$PROJECT_DIR$/vendor/theseer/tokenizer" />
       <path value="$PROJECT_DIR$/vendor/maximebf/debugbar" />
       <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-debugbar" />
-      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-util" />
-      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php56" />
-      <path value="$PROJECT_DIR$/vendor/tymon/jwt-auth" />
-      <path value="$PROJECT_DIR$/vendor/namshi/jose" />
+      <path value="$PROJECT_DIR$/vendor/phpseclib/phpseclib" />
+      <path value="$PROJECT_DIR$/vendor/league/oauth2-server" />
+      <path value="$PROJECT_DIR$/vendor/league/event" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-factory" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/guzzle" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/promises" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/psr7" />
       <path value="$PROJECT_DIR$/vendor/lcobucci/jwt" />
+      <path value="$PROJECT_DIR$/vendor/laravel/passport" />
+      <path value="$PROJECT_DIR$/vendor/defuse/php-encryption" />
+      <path value="$PROJECT_DIR$/vendor/symfony/psr-http-message-bridge" />
+      <path value="$PROJECT_DIR$/vendor/firebase/php-jwt" />
+      <path value="$PROJECT_DIR$/vendor/ralouphie/getallheaders" />
+      <path value="$PROJECT_DIR$/vendor/zendframework/zend-diactoros" />
     </include_path>
   </component>
   <component name="ProjectId" id="1RD2esEIpNBH7upwljT42b69fmh" />
@@ -140,11 +177,11 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../cadastr" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../debtors" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Debugger" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PhpStorm 2019.2.2\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
@@ -208,6 +245,29 @@
       <workItem from="1571638771204" duration="33000" />
       <workItem from="1571638850834" duration="104000" />
       <workItem from="1571846856677" duration="7806000" />
+      <workItem from="1572104743979" duration="40000" />
+      <workItem from="1572280019618" duration="6788000" />
+      <workItem from="1572330233780" duration="102000" />
+      <workItem from="1572382170670" duration="1924000" />
+      <workItem from="1572418108025" duration="130000" />
+      <workItem from="1572451547889" duration="1635000" />
+      <workItem from="1572453242189" duration="28000" />
+      <workItem from="1572453293066" duration="6530000" />
+      <workItem from="1572504454968" duration="76000" />
+      <workItem from="1572504548134" duration="17000" />
+      <workItem from="1572504578306" duration="69000" />
+      <workItem from="1572514319024" duration="787000" />
+      <workItem from="1572515125376" duration="263000" />
+      <workItem from="1572515401208" duration="1940000" />
+      <workItem from="1572535692593" duration="7744000" />
+      <workItem from="1572590293259" duration="58000" />
+      <workItem from="1572621250828" duration="7212000" />
+      <workItem from="1572775511333" duration="4176000" />
+      <workItem from="1572865216371" duration="7247000" />
+      <workItem from="1572876540627" duration="2216000" />
+      <workItem from="1573057414220" duration="3376000" />
+      <workItem from="1573108468611" duration="13000" />
+      <workItem from="1573142881130" duration="124000" />
     </task>
     <servers />
   </component>
@@ -226,5 +286,16 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Http/Kernel.php</url>
+          <line>37</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

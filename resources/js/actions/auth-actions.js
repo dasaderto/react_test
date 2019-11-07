@@ -6,6 +6,7 @@ export const USER_REGISTER_FAIL = 'users:fail-register';
 export const USER_LOGIN = 'users:login';
 export const USER_LOGIN_FAIL = 'users:fail-login';
 export const USER_LOGOUT = 'users:logout';
+export const TOKEN_VALID = 'token:valid';
 
 export function login(user) {
     return (dispatch) => {
@@ -13,13 +14,14 @@ export function login(user) {
         for (let property in user) {
             userData.append(property, user[property]);
         }
-        return axios.post("/api/user/login", userData)
+        return axios.post("/api/login", userData)
             .then(res => {
                 console.log(res.data);
                 if (res.data.success) {
                     let appState = {
                         isLoggedIn: true,
-                        user: res.data.data
+                        user: res.data.data,
+                        expires_in : res.data.data.expires_in
                     };
                     localStorage["appState"] = JSON.stringify(appState);
                     setAuthToken(res.data.data.auth_token);
@@ -44,17 +46,43 @@ export function login(user) {
 
 export function logout() {
     return (dispatch) => {
+        axios.get('/api/logout').then(res=>{
+            console.log(res.data);
+            let appState = {
+                isLoggedIn: false,
+                user: {}
+            };
+            localStorage["appState"] = JSON.stringify(appState);
+            setAuthToken(false);
+            dispatch({
+                type: USER_LOGOUT,
+                payload: {}
+            });
+        })
+    };
+}
+
+export function tokenRevoked() {
+    return (dispatch) => {
         let appState = {
             isLoggedIn: false,
             user: {}
         };
         localStorage["appState"] = JSON.stringify(appState);
-        setAuthToken(false);
         dispatch({
             type: USER_LOGOUT,
             payload: {}
         });
-    };
+    }
+}
+
+export function tokenValid() {
+    return (dispatch) => {
+        dispatch({
+            type: TOKEN_VALID,
+            payload: {}
+        });
+    }
 }
 
 export function register(user) {
@@ -63,7 +91,7 @@ export function register(user) {
         for (let property in user) {
             userData.append(property, user[property]);
         }
-        return axios.post("/api/user/register", userData)
+        return axios.post("/api/register", userData)
             .then(res => {
                 console.log(res.data);
                 if (res.data.success) {

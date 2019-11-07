@@ -17,15 +17,15 @@ class QuestionController extends Controller
 
     public function getNullQuestion()
     {
-        $nullQuestion = Question::where('parent_item_id', null)->skip(request()->nullQuestion + 1)->first();
+        $nullQuestion = Question::where('parent_item_id', null)->skip(request()->nullQuestion)->first();
         if ($nullQuestion) {
-            if ($nullQuestion->type === 'test') {
+            if ($nullQuestion->type == 'test' || $nullQuestion->type == 'checkbox') {
                 $answers = Question::where('parent_item_id', $nullQuestion->id)->pluck('item_text')->toArray();
                 if ($answers) {
                     return response()->json([
                         'ask' => $nullQuestion->item_text,
                         'answer' => $answers,
-                        'type' => 'test',
+                        'type' => $nullQuestion->type,
                         "nullQuestion" => request()->nullQuestion + 1
                     ], 200);
                 }
@@ -39,7 +39,7 @@ class QuestionController extends Controller
             }
         } else {
             return response()->json([
-                'ask'   => "LAST_RESPONSE",
+                'ask' => "LAST_RESPONSE",
                 'type' => "text",
                 "nullQuestion" => null
             ], 200);
@@ -56,7 +56,7 @@ class QuestionController extends Controller
                     $fileList .= $file->getClientOriginalName() . ";";
                 }
 
-                if($request->cookie("token")){
+                if ($request->cookie("token")) {
                     $askId = Question::where("item_text", "=", $request->question)->first();
                     $storeAnswer = new Answer;
                     $storeAnswer->user_token = $request->cookie("token");
@@ -71,28 +71,20 @@ class QuestionController extends Controller
         }
         Debugbar::info($request->files);
         if ($request->answer) {
-            if($request->cookie("token")){
-                $askId = Question::where("item_text", "=", $request->question)->first();
-                $storeAnswer = new Answer;
-                $storeAnswer->user_token = $request->cookie("token");
-                $storeAnswer->question_id = $askId->id;
-                $storeAnswer->answer = $request->answer;
-                $storeAnswer->save();
-            }
+            Log::info($request->answer);
+            $askId = Question::where("item_text", "=", $request->question)->first();
+            $storeAnswer = new Answer;
+            $storeAnswer->user_token = $request->cookie("token");
+            $storeAnswer->question_id = $askId->id;
+            $storeAnswer->answer = implode("%/%",$request->answer);
+            $storeAnswer->save();
         }
         return $this->getNullQuestion();
     }
 
-    public function startPage(){
+    public function startPage()
+    {
         return Response::view("welcome");
-        request()->session()->regenerate();
-        $this->token  = md5(now().request()->session()->getId());
-        $this->userCookie = cookie('token', $this->token, 7200);
-        if(!request()->cookie("token")){
-            return Response::view("welcome")->withCookie($this->userCookie);
-        }else{
-            return Response::view("welcome");
-        }
     }
 
     public function testStart()

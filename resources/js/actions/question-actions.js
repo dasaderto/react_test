@@ -5,10 +5,10 @@ export const START_TEST = 'questions:testStart';
 export const UPDATE_QUESTION = 'questions:updateQuestions';
 
 export function fetchQuestion(answer){
+    console.log(answer);
     return (dispatch)=>{
         return axios.post("/api/questions/list",answer)
             .then(res=>{
-                console.log(res.data);
                 dispatch(updateQuestions(res.data))
             });
     }

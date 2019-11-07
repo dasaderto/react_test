@@ -1,4 +1,4 @@
-import {USER_LOGIN, USER_LOGIN_FAIL, USER_LOGOUT, USER_REGISTER, USER_REGISTER_FAIL} from "../actions/auth-actions";
+import {USER_LOGIN, USER_LOGIN_FAIL, USER_LOGOUT, USER_REGISTER, USER_REGISTER_FAIL,TOKEN_VALID} from "../actions/auth-actions";
 
 const initialState = {
     isLoggedIn: localStorage['appState'] ? JSON.parse(localStorage['appState']).isLoggedIn : false,
@@ -22,13 +22,12 @@ export default function questionReducer(state = initialState, {type, payload}) {
             };
             return state;
         case USER_LOGIN_FAIL:
-            alert(payload);
             return state;
         case USER_REGISTER_FAIL:
-            alert(payload);
+            return state;
+        case TOKEN_VALID:
             return state;
         case USER_LOGOUT:
-            alert('logout success');
             state = {
                 ...state,
                 isLoggedIn: false,

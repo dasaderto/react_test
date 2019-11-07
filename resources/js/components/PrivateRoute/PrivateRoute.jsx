@@ -6,6 +6,7 @@ function PrivateRoute({component: Component, ...rest}) {
     return (
         <Route
             {...rest}
+            exact
             render={routeProps => (
                 store.getState().authReducer.isLoggedIn ?
                     <Component {...routeProps} />

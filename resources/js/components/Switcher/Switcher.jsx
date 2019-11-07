@@ -3,16 +3,17 @@ import {Input, FileInput, TestAnswer, Textarea, Button} from '../';
 import {fadeInUp, fadeOutUp} from 'react-animations';
 import {StyleSheet, css} from 'aphrodite';
 import './Switcher.scss';
+import {CheckAnswer} from "../";
 
 const styles = StyleSheet.create({
     fadeInUp: {
         animationName: fadeInUp,
-        animationDuration: '1s',
+        animationDuration: '0.5s',
         opacity: 1
     },
     fadeOutUp: {
         animationName: fadeOutUp,
-        animationDuration: '1s',
+        animationDuration: '0.5s',
         opacity: 0
     }
 });
@@ -27,7 +28,7 @@ class Switcher extends Component {
             request: {
                 files: [],
                 question: '',
-                answer: '',
+                answer: "",
                 nullQuestion: 0,
                 type: ''
             }
@@ -36,6 +37,7 @@ class Switcher extends Component {
         this.handleInputSubmit = this.handleInputSubmit.bind(this);
         this.handleTestAnswerClick = this.handleTestAnswerClick.bind(this);
         this.handleFileSelect = this.handleFileSelect.bind(this);
+        this.handleChecked = this.handleChecked.bind(this);
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -55,7 +57,7 @@ class Switcher extends Component {
         e.preventDefault();
         let request = {
             question: this.props.question.ask,
-            answer: e.target.innerText,
+            answer: [e.target.innerText],
             nullQuestion: this.props.question.nullQuestion,
             type: this.props.type
         };
@@ -68,7 +70,7 @@ class Switcher extends Component {
             ...this.state,
             request: {
                 ...this.state.request,
-                answer: e.target.value,
+                answer: [e.target.value],
             }
         });
     };
@@ -82,6 +84,16 @@ class Switcher extends Component {
             }
         });
     };
+
+    handleChecked(answers){
+        this.setState({
+            ...this.state,
+            request: {
+                ...this.state.request,
+                answer: answers
+            }
+        });
+    }
 
     handleInputSubmit = (e) => {
         e.preventDefault();
@@ -109,9 +121,7 @@ class Switcher extends Component {
                 answer: '',
             }
         });
-        setTimeout(() => {
-            this.props.onSend(data);
-        }, 1000);
+        this.props.onSend(data);
     };
 
     fileUploader = () => {
@@ -134,6 +144,9 @@ class Switcher extends Component {
                 answerPanel = this.props.question.answer.map((answer) => {
                     return <TestAnswer key={answer.toString()} variant={answer} onClick={this.handleTestAnswerClick}/>
                 });
+                break;
+            case 'checkbox':
+                answerPanel = <CheckAnswer question={this.props.question} onCheck={this.handleChecked}/>;
                 break;
             case 'text':
                 answerPanel = <Input inputClass={"text-answer"} value={this.state.request.answer} onChange={this.handleChange}/>;

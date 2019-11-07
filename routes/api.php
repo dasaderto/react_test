@@ -22,21 +22,23 @@ Route::post('/test/start', 'QuestionController@testStart');
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::group(['middleware' => ['jwt-auth', 'api-header']], function () {
+Route::group(['middleware' => ['api-header']], function () {
 
     Route::get('users/list', function () {
         $users = App\User::all();
 
-        $response = ['success' => true, 'data' => \request()];
+        $response = ['success' => true, 'data' => $users];
         return response()->json($response, 201);
     });
 
     Route::group(['namespace' => 'Admin'], function () {
-        Route::post('/project', 'AdminController@projectCreate');
+        Route::get('/projects/list',"AdminController@index");
+        Route::post('/projects', 'AdminController@projectCreate');
+        Route::get('/projects/edit/{id}',"AdminController@projectEdit");
     });
 });
-Route::group(['middleware' => 'api-header'], function () {
-    Route::post('user/login', 'UserController@login');
-    Route::post('user/register', 'UserController@register');
+Route::group(['middleware' => 'api-header','namespace' => 'Api'], function () {
+    Route::post('/login', 'AuthController@login');
+    Route::post('/register', 'AuthController@register');
+    Route::get('/logout', 'AuthController@logout');
 });
-

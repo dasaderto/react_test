@@ -6,9 +6,42 @@ use App\Models\Question;
 use App\Models\Test;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+
 //auth('api')->user()
 class AdminController extends Controller
 {
+
+    public function index(){
+        $projects = Test::where('user_id',auth('api')->user()->id)->get();
+        $projects_ids = $projects->pluck('id')->toArray();
+        $questions = Question::whereIn('test_id',$projects_ids)->get();
+        foreach ($projects as $project){
+            $questionsList = $questions->where('parent_item_id',null)->where('test_id',$project->id);
+            $questArr = [];
+            foreach ($questionsList as $question){
+               $answers = $questions->where('parent_item_id',$question->id)
+                   ->where('test_id',$project->id)
+                   ->pluck('item_text');
+               Log::info($question->id);
+               Log::info($project->id);
+               $cur_question = [
+                   'ask' => $question->item_text,
+                   'type' => $question->type,
+                   'answers' => $answers
+               ];
+               $questArr[] = $cur_question;
+            }
+            $project['questions'] = $questArr;
+        }
+
+        return response()->json([
+           'success' => true,
+           'data'=>$projects
+        ]);
+    }
+
     public function projectCreate(Request $request){
 
         $project = new Test();
@@ -25,19 +58,29 @@ class AdminController extends Controller
             $newQuestion->type = $question['askType'];
             $newQuestion->test_id = $project->id;
             $newQuestion->save();
-            foreach ($question['answers'] as $answer) {
-                $newAnswer = new Question();
-                $newAnswer->item_text = $answer;
-                $newAnswer->type = $question['askType'];
-                $newAnswer->parent_item_id = $newQuestion->id;
-                $newAnswer->test_id = $project->id;
-                $newAnswer->save();
-            }
+            if(!empty($question['answers']))
+                foreach ($question['answers'] as $answer) {
+                    $newAnswer = new Question();
+                    $newAnswer->item_text = $answer;
+                    $newAnswer->type = $question['askType'];
+                    $newAnswer->parent_item_id = $newQuestion->id;
+                    $newAnswer->test_id = $project->id;
+                    $newAnswer->save();
+                }
         }
 
 
         return response()->json([
             'success' => "Data success stored",
+        ]);
+    }
+
+    public function projectEdit($id){
+        $test = Test::where('user_id',auth('api')->user()->id)->where('id',$id)->first();
+
+        return response()->json([
+           'success'=>true,
+           'data'=>$test
         ]);
     }
 }

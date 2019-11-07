@@ -43,9 +43,14 @@ class ProjectAppend extends Component {
                         }
                     }}
                     onSubmit={values => {
+                        console.log(values);
+                        values.questions.forEach((question)=>{
+                            question.answers = question.answers.filter(el => el!=="");
+                        });
+                        console.log(values);
                         this.props.onCreate(values);
                         setTimeout(() => {
-                            alert(JSON.stringify(values, null, 2));
+                            // alert(JSON.stringify(values, null, 2));
                         }, 500)
                     }}
                     render={({values}) => (
