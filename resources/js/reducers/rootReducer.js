@@ -12,14 +12,11 @@ const authMiddleware = store => next => action => {
     if(localStorage['appState']) {
         if (new Date(JSON.parse(localStorage['appState']).user.expires_in) <= Date.now()) {
             setAuthToken(false);
-            console.log("token invalid")
             store.dispatch(tokenRevoked());
         }else{
             setAuthToken(JSON.parse(localStorage['appState']).user.auth_token);
-            console.log("token valid")
         }
     }
-    console.log("Auth middleware");
     next(action);
 };
 

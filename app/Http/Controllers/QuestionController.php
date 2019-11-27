@@ -15,12 +15,17 @@ use JWTAuth;
 class QuestionController extends Controller
 {
 
+    public function __construct()
+    {
+        \request()->testId = 18;
+    }
+
     public function getNullQuestion()
     {
-        $nullQuestion = Question::where('parent_item_id', null)->skip(request()->nullQuestion)->first();
+        $nullQuestion = Question::where('parent_item_id', null)->where('test_id',request()->testId)->skip(request()->nullQuestion)->first();
         if ($nullQuestion) {
             if ($nullQuestion->type == 'test' || $nullQuestion->type == 'checkbox') {
-                $answers = Question::where('parent_item_id', $nullQuestion->id)->pluck('item_text')->toArray();
+                $answers = Question::where('parent_item_id', $nullQuestion->id)->where('test_id',request()->testId)->pluck('item_text')->toArray();
                 if ($answers) {
                     return response()->json([
                         'ask' => $nullQuestion->item_text,
@@ -57,7 +62,7 @@ class QuestionController extends Controller
                 }
 
                 if ($request->cookie("token")) {
-                    $askId = Question::where("item_text", "=", $request->question)->first();
+                    $askId = Question::where("item_text", "=", $request->question)->where('test_id',request()->testId)->first();
                     $storeAnswer = new Answer;
                     $storeAnswer->user_token = $request->cookie("token");
                     $storeAnswer->question_id = $askId->id;
@@ -69,10 +74,8 @@ class QuestionController extends Controller
             }
             return $this->getNullQuestion();
         }
-        Debugbar::info($request->files);
         if ($request->answer) {
-            Log::info($request->answer);
-            $askId = Question::where("item_text", "=", $request->question)->first();
+            $askId = Question::where("item_text", "=", $request->question)->where('test_id',request()->testId)->first();
             $storeAnswer = new Answer;
             $storeAnswer->user_token = $request->cookie("token");
             $storeAnswer->question_id = $askId->id;
@@ -89,7 +92,8 @@ class QuestionController extends Controller
 
     public function testStart()
     {
-        $startQuestion = Question::where('parent_item_id', null)->first();
+
+        $startQuestion = Question::where('parent_item_id', null)->where('test_id',request()->testId)->first();
         $answers = Question::where('parent_item_id', $startQuestion->id)->pluck('item_text')->toArray();
 
         return response()->json([

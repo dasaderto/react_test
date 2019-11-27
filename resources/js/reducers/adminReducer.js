@@ -1,4 +1,4 @@
-import {PROJECT_CREATED,PROJECTS_FETCHED}  from "../actions/admin-actions";
+import {PROJECT_CREATED, PROJECTS_FETCHED, PROJECT_EDIT, PROJECT_UPDATED} from "../actions/admin-actions";
 
 let initialState = {};
 
@@ -12,10 +12,25 @@ export default function adminReducer(state = initialState, {type, payload}) {
             };
             return state;
         case PROJECTS_FETCHED:
-            console.log(payload);
             state = {
                 ...state,
                 projects: payload.projects,
+            };
+            return state;
+        case PROJECT_EDIT:
+            state = {
+                ...state,
+                project: payload.project,
+            };
+            return state;
+        case PROJECT_UPDATED:
+            let updatedProjects = state.projects.map(el => {
+                return (el.id === payload.project.id) ? payload.project : el;
+            });
+            state = {
+                ...state,
+                projects: updatedProjects,
+                project: payload.project,
             };
             return state;
         default:

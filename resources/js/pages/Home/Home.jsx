@@ -6,6 +6,7 @@ import {login, register, logout} from "../../actions/auth-actions";
 import './Home.scss';
 import {Link} from "react-router-dom";
 import {Switcher, StartPanel, TestOverPanel, LoginForm, RegisterForm} from "../../components";
+import {Nav} from "../../modules";
 import {Button} from '@material-ui/core';
 
 
@@ -40,8 +41,8 @@ class Home extends Component {
         this.props.onRegister(user);
     };
 
-    testStarter = () => {
-        this.props.testStart();
+    testStarter = (id) => {
+        this.props.testStart(id);
         this.setState({
             ...this.state,
             isTestStart: true
@@ -89,13 +90,7 @@ class Home extends Component {
     render() {
         return (
             <div className={'home'}>
-                {this.state.user.name &&
-                <div className="user">
-                    <span>Приветики {this.state.user.name}</span>
-                    <Button><Link to={'/admin'}>Погнали в админку</Link></Button>
-                    <Button onClick={this.handleLogout}>Выйти</Button>
-                </div>
-                }
+                {this.state.user.name && <Nav user={this.state.user} handleLogout={this.props.onLogout}/>}
                 {!this.state.isTestStart ? <StartPanel testStarter={this.testStarter}/> : null}
                 {this.testSwitcher()}
                 <LoginForm onLogin={this.handleLogin}/>

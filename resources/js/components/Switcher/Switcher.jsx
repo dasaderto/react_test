@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
-import {Input, FileInput, TestAnswer, Textarea, Button} from '../';
+import {Input, FileInput, TestAnswer, Textarea} from '../';
 import {fadeInUp, fadeOutUp} from 'react-animations';
 import {StyleSheet, css} from 'aphrodite';
 import './Switcher.scss';
+import {Button} from "@material-ui/core";
 import {CheckAnswer} from "../";
 
 const styles = StyleSheet.create({
@@ -121,6 +122,7 @@ class Switcher extends Component {
                 answer: '',
             }
         });
+
         this.props.onSend(data);
     };
 
@@ -164,6 +166,7 @@ class Switcher extends Component {
     };
 
     render() {
+        console.log(this.props.question);
         return (
             <div className={this.state.animateOut ? css(styles.fadeOutUp) : css(styles.fadeInUp)}>
                 <div className={'answer-container'}>
@@ -172,7 +175,7 @@ class Switcher extends Component {
                     </div>
                     {this.renderQuestionItem()}
                     {(this.props.question.type !== 'test') ?
-                        <Button text={'Дальше'} onClick={this.handleInputSubmit}/> : null}
+                        <Button text={'Дальше'} onClick={this.handleInputSubmit}>Дальше</Button> : null}
                 </div>
             </div>
         );

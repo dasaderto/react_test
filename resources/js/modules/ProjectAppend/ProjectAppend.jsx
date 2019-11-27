@@ -1,14 +1,53 @@
 import React, {Component} from 'react';
-import {Field, FieldArray, Form, Formik} from "formik";
-import RadioGroup from "@material-ui/core/RadioGroup";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import {AnswerAppender,ProjectSettings} from "../../components";
+import {ErrorMessage, Field, FieldArray, Form, Formik, validateYupSchema} from "formik";
+import {RadioGroup, Button} from "@material-ui/core/";
+import {AnswerAppender, ProjectSettings, CustomRadio} from "../../components";
+import {StyleSheet, css} from 'aphrodite';
+import * as Yup from 'yup';
 
 import "./ProjectAppend.scss"
+import {fadeInUp, fadeOutUp} from "react-animations";
+
+const styles = StyleSheet.create({
+    textarea: {
+        display: "block",
+        width: "30%",
+        height: "auto",
+        padding: ".375rem .75rem",
+        fontSize: "1rem",
+        fontWeight: "400",
+        lineHeight: "1.5",
+        color: "#495057",
+        backgroundColor: "#fff",
+        backgroundClip: "padding-box",
+        border: "1px solid #ced4da",
+        borderRadius: ".25rem",
+        transition: "border-color .15s ease-in-out,box-shadow .15s ease-in-out"
+    }
+});
+
+let validateProjectSchema = Yup.object().shape({
+    questions: Yup.array()
+        .of(Yup.object().shape({
+            ask: Yup.string()
+                .required("Заполните поле вопрос")
+                .min(3, "Минимальная длина вопроса 3 символа")
+                .max(100, "Максимальная длина вопроса 100 символов"),
+            askType: Yup.string()
+                .required("Выберите тип ответа"),
+            answers: Yup.array().of(Yup.string().min(1, "Ответ не может быть пустым")).min(2, "Введите хотя бы один ответ")
+        }))
+        .min(1, "В тесте должен быть хотя бы один вопрос"),
+    projectSettings:Yup.object().shape({
+        projectName:Yup.string().required('Введите название проекта'),
+        url:Yup.string().required('Введите url'),
+        email:Yup.string().email("Некорректный email")
+    })
+});
 
 class ProjectAppend extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
             askTypes: [
@@ -28,6 +67,7 @@ class ProjectAppend extends Component {
             ],
         };
     }
+
     render() {
         return (
             <div className={'admin-project__append'}>
@@ -36,25 +76,24 @@ class ProjectAppend extends Component {
                     initialValues={{
                         questions: [],
                         projectSettings: {
-                            url:'',
-                            animateType:'',
-                            email:'',
-                            metrics:''
+                            projectName: '',
+                            url: '',
+                            animateType: '',
+                            email: '',
+                            metrics: ''
                         }
                     }}
-                    onSubmit={values => {
+                    validationSchema={validateProjectSchema}
+                    validateOnChange={true}
+                    onSubmit={(values) => {
+                        // values = values.questions.map((question) => {
+                        //     return question.answers = question.answers.filter(el => el !== "");
+                        // });
                         console.log(values);
-                        values.questions.forEach((question)=>{
-                            question.answers = question.answers.filter(el => el!=="");
-                        });
-                        console.log(values);
-                        this.props.onCreate(values);
-                        setTimeout(() => {
-                            // alert(JSON.stringify(values, null, 2));
-                        }, 500)
-                    }}
-                    render={({values}) => (
+                    }}>
+                    {({values, errors, setFieldValue, setStatus}) => (
                         <Form>
+                            {console.log(errors)}
                             <ProjectSettings settings={values.projectSettings} name={'projectSettings'}/>
                             <FieldArray
                                 name="questions"
@@ -63,55 +102,68 @@ class ProjectAppend extends Component {
                                         {values.questions && values.questions.length > 0 ? (
                                             values.questions.map((question, index) => (
                                                 <div key={index}>
-                                                    <Field component='textarea' rows={3}
-                                                           name={`questions[${index}].ask`}/>
+                                                    <Field className={css(styles.textarea)} component='textarea'
+                                                           rows={3}
+                                                           name={`questions[${index}].ask`}
+                                                           placeholder={"Введите вопрос"}/>
+                                                    <ErrorMessage name={`questions[${index}].ask`}/>
                                                     <RadioGroup aria-label="ask-type">
                                                         {this.state.askTypes.map((type, askTypeIndex) => (
-                                                            <FormControlLabel key={askTypeIndex} value={type.type}
-                                                                              control={
-                                                                                  <Field
-                                                                                      type='radio'
-                                                                                      name={`questions[${index}].askType`}/>
-                                                                              } label={type.value}/>
+                                                            <CustomRadio checked={!askTypeIndex} key={askTypeIndex}
+                                                                         name={`questions[${index}].askType`}
+                                                                         type='radio' value={type.type}
+                                                                         label={type.value}
+                                                                         onChange={(e) => {
+                                                                             if (e.target.value !== this.state.askTypes[2].type)
+                                                                                 validateProjectSchema.validate({questions: values.questions}).catch(err => setStatus(err));
+                                                                             setFieldValue(`questions[${index}].askType`, e.target.value)
+                                                                         }}
+                                                            />
                                                         ))}
                                                     </RadioGroup>
-                                                    {(question.askType === this.state.askTypes[0].type || question.askType === this.state.askTypes[1].type) &&
-                                                    <AnswerAppender answers={question.answers} name={`questions[${index}].answers`}/>}
-                                                    <button type="button"
+                                                    {((question.askType === this.state.askTypes[0].type || question.askType === this.state.askTypes[1].type)) ? (
+                                                        <AnswerAppender answers={question.answers}
+                                                                        name={`questions[${index}].answers`}/>
+                                                    ) : null}
+                                                    <ErrorMessage name={`questions[${index}].answers`}/>
+                                                    <Button variant="contained" color="primary" type="button"
                                                             onClick={() => arrayHelpers.remove(index)} // remove a question from the list
                                                     >
                                                         Удалить вопрос
-                                                    </button>
-                                                    <button
+                                                    </Button>
+                                                    <Button
+                                                        variant="contained" color="primary"
                                                         type="button"
                                                         onClick={() => arrayHelpers.push({
                                                             ask: '',
-                                                            askType: '',
+                                                            askType: 'test',
                                                             answers: ['']
                                                         })} // insert an empty string at a position
                                                     >
                                                         Добавить вопрос
-                                                    </button>
+                                                    </Button>
                                                 </div>
                                             ))
                                         ) : (
-                                            <button type="button" onClick={() => arrayHelpers.push({
-                                                ask: '',
-                                                askType: '',
-                                                answers: ['']
-                                            })}>
+                                            <Button variant="contained" color="primary" type="button"
+                                                    onClick={() => arrayHelpers.push({
+                                                        ask: '',
+                                                        askType: 'test',
+                                                        answers: ['']
+                                                    })}>
                                                 Добавить вопрос
-                                            </button>
+                                            </Button>
                                         )}
                                         <div>
-                                            <button type="submit">Отправить</button>
+                                            <Button variant="contained" color="primary" type="submit">Отправить</Button>
                                         </div>
+                                        {/*<ErrorMessage name={'questions'}/>*/}
                                     </div>
                                 )}
                             />
                         </Form>
                     )}
-                />
+                </Formik>
             </div>
         );
     }

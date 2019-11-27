@@ -30,8 +30,8 @@ class RegisterForm extends Component {
                     })}
                     onSubmit={fields => {
                         this.props.onRegister(fields);
-                    }}
-                    render={({errors, status, touched}) => (
+                    }} >
+                    {({errors, status, touched}) => (
                         <Form>
                             <div className="form-group">
                                 <label htmlFor="username">Bведите Имя</label>
@@ -59,7 +59,7 @@ class RegisterForm extends Component {
                             </div>
                         </Form>
                     )}
-                />
+                </Formik>
             </div>
         );
     }

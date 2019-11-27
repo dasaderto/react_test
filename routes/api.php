@@ -34,6 +34,7 @@ Route::group(['middleware' => ['api-header']], function () {
     Route::group(['namespace' => 'Admin'], function () {
         Route::get('/projects/list',"AdminController@index");
         Route::post('/projects', 'AdminController@projectCreate');
+        Route::put('/projects', 'AdminController@projectUpdate');
         Route::get('/projects/edit/{id}',"AdminController@projectEdit");
     });
 });

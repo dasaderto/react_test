@@ -1,19 +1,14 @@
 import React, {Component} from 'react';
 
 import './StartPanel.scss';
-import {Button} from "../index";
+import {Button} from "@material-ui/core";
 
 class StartPanel extends Component {
-
-    handleStarterTest = ()=>{
-        this.props.testStarter();
-    };
-
     render() {
         return (
             <div className={"start-page"}>
                 start test?
-                <Button text={'Начать тест'} onClick={this.handleStarterTest}/>
+                <Button onClick={()=>this.props.testStarter(18)}>Начать тест</Button>
             </div>
         );
     }

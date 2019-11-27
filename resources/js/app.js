@@ -1,18 +1,17 @@
-import React, {Component} from 'react';
+import React, {Component, lazy} from 'react';
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 
 import axios from 'axios';
-import {AdminPanel, Home} from './pages';
+import {Home,AdminPanel,ProjectEdit} from './pages';
 import setAuthToken from "./auth/setAuthToken";
 import {store} from "./reducers/rootReducer";
 import {tokenRevoked, tokenValid} from "./actions/auth-actions";
 
 
-
 class App extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
 
         // if(localStorage['appState']){
@@ -37,14 +36,19 @@ class App extends Component {
 
     render() {
         return (
-            <BrowserRouter>
-                <div className="wrapper">
-                    <Switch>
-                        <Route exact path='/' component={Home}/>
-                        <PrivateRoute path="/admin" component={AdminPanel}/>
-                    </Switch>
+            <div className="page">
+                <div className="page__wrapper">
+                    <BrowserRouter>
+                        <div className="wrapper">
+                            <Switch>
+                                <Route exact path='/' component={Home}/>
+                                <PrivateRoute exact path="/admin" component={AdminPanel}/>
+                                <PrivateRoute exact path="/admin/project/:id" component={ProjectEdit}/>
+                            </Switch>
+                        </div>
+                    </BrowserRouter>
                 </div>
-            </BrowserRouter>
+            </div>
         );
     }
 }

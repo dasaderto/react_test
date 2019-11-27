@@ -58,6 +58,7 @@ export function logout() {
                 type: USER_LOGOUT,
                 payload: {}
             });
+
         })
     };
 }

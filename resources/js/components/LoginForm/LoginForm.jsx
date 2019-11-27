@@ -19,8 +19,8 @@ class LoginForm extends Component {
                     })}
                     onSubmit={fields => {
                         this.props.onLogin(fields);
-                    }}
-                    render={({errors, status, touched}) => (
+                    }} >
+                    {({errors, status, touched}) => (
                         <Form>
                             <div className="form-group">
                                 <label htmlFor="email">Email</label>
@@ -40,7 +40,7 @@ class LoginForm extends Component {
                             </div>
                         </Form>
                     )}
-                />
+                </Formik>
             </div>
         );
     }
